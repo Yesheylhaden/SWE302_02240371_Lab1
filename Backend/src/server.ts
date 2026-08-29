@@ -1,12 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 
-import './database.js';
-
-import authRoutes from './routes/auth.js';
-import paymentRoutes from './routes/payments.js';
-import registrationRoutes from './routes/registration.js';
-import resultsRoutes from './routes/results.js';
+import studentRoutes from './routes/students.js';
 
 const app = express();
 
@@ -17,29 +12,13 @@ app.use(express.json());
 app.get('/api/health', (_req, res) => {
   res.json({
     success: true,
-    message:
-      'Student Management System backend is running.',
+    message: 'Student Management System backend is running.',
   });
 });
 
 app.use(
-  '/api/auth',
-  authRoutes
-);
-
-app.use(
-  '/api/payments',
-  paymentRoutes
-);
-
-app.use(
-  '/api/registration',
-  registrationRoutes
-);
-
-app.use(
-  '/api/results',
-  resultsRoutes
+  '/api/students',
+  studentRoutes
 );
 
 const PORT = 5050;
